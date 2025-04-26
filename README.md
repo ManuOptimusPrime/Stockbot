@@ -1,0 +1,2 @@
+# Stockbot
+Stock alert
