@@ -9,7 +9,27 @@ load_dotenv()
 # Telegram Bot Details (loaded from .env)
 bot_token = os.getenv('BOT_TOKEN')
 chat_id = os.getenv('CHAT_ID')
+import requests
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+CHAT_ID = os.getenv('CHAT_ID')
+
+# Send Hi message when bot starts
+def send_startup_message():
+    message = "Hi, I am alive! Bot started successfully!"
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+    payload = {
+        "chat_id": CHAT_ID,
+        "text": message
+    }
+    requests.post(url, data=payload)
+
+# Call this function once at the start
+send_startup_message()
 # List of stocks to monitor
 stocks = ["TATAMOTORS.NS", "BOSCHLTD.NS", "ABB.NS", "PIDILITIND.NS", "INFY.NS"]
 
